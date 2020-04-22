@@ -7,6 +7,7 @@ const fetchResults = () =>
       const results = [];
       data.results.map((result) => {
         const characterData = {
+          id: result.id,
           name: result.name,
           image: result.image,
           species: result.species,

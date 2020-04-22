@@ -8,7 +8,7 @@ class CharacterCard extends React.Component {
 
   renderCharacter(character) {
     return (
-      <li>
+      <li key={character.id} id={character.id}>
         <img src={character.image} alt={character.name} title={character.name}></img>
         <h3>{character.name}</h3>
         <p>{character.species}</p>
