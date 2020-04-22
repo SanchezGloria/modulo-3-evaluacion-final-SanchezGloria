@@ -9,13 +9,13 @@ class CharacterCard extends React.Component {
 
   renderCharacter(character) {
     return (
-      // <Link to={`/character/${character.id}`}>
       <li key={character.id} id={character.id}>
-        <img src={character.image} alt={character.name} title={character.name}></img>
-        <h3>{character.name}</h3>
-        <p>{character.species}</p>
+        <Link to={`/character/${character.id}`}>
+          <img src={character.image} alt={character.name} title={character.name}></img>
+          <h3>{character.name}</h3>
+          <p>{character.species}</p>
+        </Link>
       </li>
-      // </Link>
     );
   }
 

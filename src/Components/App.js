@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 // import CharacterList from './CharacterList';
 // import Filters from './Filters';
 import Landing from './Landing';
+import CharacterDetail from './CharacterDetail';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class App extends React.Component {
     };
     this.handleInput = this.handleInput.bind(this);
     this.getLanding = this.getLanding.bind(this);
+    this.getCharacterDetail = this.getCharacterDetail.bind(this);
   }
 
   fetchNewResults() {
@@ -45,8 +47,17 @@ class App extends React.Component {
   getLanding() {
     return <Landing name={this.state.name} handleInput={this.handleInput} resultStore={this.filteredCharacters()} />;
   }
-  getCharacterDetail(props) {}
+  getCharacterDetail(props) {
+    console.log(props.match.params.id);
+    const { resultStore } = this.state;
+    const clickedId = parseInt(props.match.params.id);
+    const character = resultStore.find((character) => character.id === clickedId);
+    return <CharacterDetail character={character} />;
+  }
+
   render() {
+    console.log(this.getCharacterDetail);
+
     return (
       <div className="App">
         <header>
