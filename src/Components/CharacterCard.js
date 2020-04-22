@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class CharacterCard extends React.Component {
   constructor(props) {
@@ -8,11 +9,13 @@ class CharacterCard extends React.Component {
 
   renderCharacter(character) {
     return (
+      // <Link to={`/character/${character.id}`}>
       <li key={character.id} id={character.id}>
         <img src={character.image} alt={character.name} title={character.name}></img>
         <h3>{character.name}</h3>
         <p>{character.species}</p>
       </li>
+      // </Link>
     );
   }
 

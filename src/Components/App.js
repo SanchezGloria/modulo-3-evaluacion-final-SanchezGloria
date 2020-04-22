@@ -1,7 +1,9 @@
 import React from 'react';
 import { fetchResults } from '../Service/ServiceResults';
-import CharacterList from './CharacterList';
-import Filters from './Filters';
+import { Route, Switch } from 'react-router-dom';
+// import CharacterList from './CharacterList';
+// import Filters from './Filters';
+import Landing from './Landing';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class App extends React.Component {
       name: '',
     };
     this.handleInput = this.handleInput.bind(this);
+    this.getLanding = this.getLanding.bind(this);
   }
 
   fetchNewResults() {
@@ -39,16 +42,23 @@ class App extends React.Component {
     return filteredCharacters;
   }
 
+  getLanding() {
+    return <Landing name={this.state.name} handleInput={this.handleInput} resultStore={this.filteredCharacters()} />;
+  }
+  getCharacterDetail(props) {}
   render() {
-    const { name } = this.state;
     return (
       <div className="App">
         <header>
           <img src="https://help.redbubble.com/hc/article_attachments/360002309526/Rick_and_Morty_-_logo__English_.png" alt="Rick and Morty" title="Rick and Morty" />
         </header>
         <main>
-          <Filters name={name} handleInput={this.handleInput} />
-          <CharacterList resultStore={this.filteredCharacters()} name={name} />
+          <Switch>
+            <Route exact path="/" render={this.getLanding}></Route>
+            <Route path="/character/:id" render={this.getCharacterDetail}></Route>
+            {/* <Filters name={name} handleInput={this.handleInput} />
+            <CharacterList resultStore={this.filteredCharacters()} name={name} /> */}
+          </Switch>
         </main>
       </div>
     );
