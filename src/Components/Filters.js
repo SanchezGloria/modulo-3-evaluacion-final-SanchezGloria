@@ -6,6 +6,7 @@ class Filters extends React.Component {
     this.handleInput = this.handleInput.bind(this);
   }
   handleInput(ev) {
+    ev.preventDefault();
     this.props.handleInput(ev.currentTarget.value);
   }
   render() {

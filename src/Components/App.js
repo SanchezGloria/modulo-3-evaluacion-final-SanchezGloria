@@ -51,8 +51,10 @@ class App extends React.Component {
     console.log(props.match.params.id);
     const { resultStore } = this.state;
     const clickedId = parseInt(props.match.params.id);
-    const character = resultStore.find((character) => character.id === clickedId);
-    return <CharacterDetail character={character} />;
+    const foundCharacter = resultStore.find((character) => character.id === clickedId);
+    if (foundCharacter !== undefined) {
+      return <CharacterDetail character={foundCharacter} />;
+    }
   }
 
   render() {

@@ -24,6 +24,22 @@ class CharacterCard extends React.Component {
       return this.props.resultStore.map((character) => this.renderCharacter(character));
     }
   }
+
+  // renderCharacters() {
+  //   if (this.props.resultStore !== undefined) {
+  //     const mappedCharacters = this.props.resultStore.map((character) => {
+  //       return this.renderCharacter(character);
+  //     });
+  //     // return mappedCharacters.name.sort();
+  //     console.log(mappedCharacters);
+  //   }
+  // }
+
+  // const { resultStore, name } = this.state;
+  // const filteredCharacters = resultStore.filter((character) => {
+  //   return character.name.toUpperCase().includes(name.toUpperCase());
+  // });
+  // return filteredCharacters;
   render() {
     console.log(this.props);
 
