@@ -4,14 +4,19 @@ class Filters extends React.Component {
   constructor(props) {
     super(props);
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleInput(ev) {
-    ev.preventDefault();
     this.props.handleInput(ev.currentTarget.value);
   }
+
+  handleSubmit(ev) {
+    ev.preventDefault();
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <label htmlFor="name">Introduce un nombre:</label>
         <input onChange={this.handleInput} type="text" id="" name="name" value={this.props.name} placeholder="Ej. Rick" />
       </form>
