@@ -27,7 +27,7 @@ class CharacterList extends React.Component {
       return (
         <ul className="main__page--list">
           {this.props.resultStore.map((character) => {
-            return <CharacterCard character={character} />;
+            return <CharacterCard key={character.id} character={character} />;
           })}
         </ul>
       );

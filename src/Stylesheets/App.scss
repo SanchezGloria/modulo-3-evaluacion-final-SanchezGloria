@@ -112,6 +112,7 @@
     }
     &--specie {
       color: white;
+      padding-bottom: 1em;
     }
   }
   &--list--container {
@@ -182,10 +183,11 @@
   }
   &--info {
     color: white;
+    font-family: 'Cabin Sketch', cursive;
     padding-bottom: 1em;
+    font-size: 1.25em;
     @media all and (min-width: 1200px) {
       font-size: 1.5em;
-      font-family: 'Cabin Sketch', cursive;
     }
   }
   &--close {
@@ -213,4 +215,17 @@
   &:active {
     color: lawngreen;
   }
+}
+.fab.fa-reddit-alien,
+.fas.fa-male,
+.fab.fa-creative-commons-sampling {
+  font-size: 1.5em;
+}
+
+.fab.fa-reddit-alien {
+  color: lawngreen;
+}
+
+.fab.fa-creative-commons-sampling {
+  color: rgb(187, 16, 16);
 }
