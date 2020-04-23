@@ -25,14 +25,24 @@ class CharacterCard extends React.Component {
     }
   }
 
-  // renderCharacters() {
-  //   if (this.props.resultStore !== undefined) {
-  //     const mappedCharacters = this.props.resultStore.map((character) => {
-  //       return this.renderCharacter(character);
-  //     });
-  //     // return mappedCharacters.name.sort();
-  //     console.log(mappedCharacters);
-  //   }
+  sortByName(a, b) {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+
+    let comparison = 0;
+    if (nameA > nameB) {
+      comparison = 1;
+    } else if (nameA < nameB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+
+  // this.props.resultStore.sort(sortByName("name"));
+
+  // sortByName() {
+  //   const namesSorted = this.props.resultStore.sort((a, b) => a.name - b.name);
+  //   return namesSorted;
   // }
 
   // const { resultStore, name } = this.state;
@@ -41,8 +51,8 @@ class CharacterCard extends React.Component {
   // });
   // return filteredCharacters;
   render() {
-    console.log(this.props);
-
+    // console.log(this.props.resultStore.sort(this.sortByName));
+    this.props.resultStore.sort(this.sortByName);
     return <div>{this.renderCharacters()}</div>;
   }
 }
