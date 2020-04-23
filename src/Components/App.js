@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 // import Filters from './Filters';
 import Landing from './Landing';
 import CharacterDetail from './CharacterDetail';
+import PageNotFound from './PageNotFound';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.fetchNewResults();
+    this.state.resultStore.sort(this.sortByName);
   }
 
   handleInput(value) {
@@ -37,14 +39,24 @@ class App extends React.Component {
   }
 
   filteredCharacters() {
-    // debugger;
-
     const { resultStore, name } = this.state;
     const filteredCharacters = resultStore.filter((character) => {
       return character.name.toUpperCase().includes(name.toUpperCase());
     });
-
     return filteredCharacters;
+  }
+
+  sortByName(a, b) {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+
+    let comparison = 0;
+    if (nameA > nameB) {
+      comparison = 1;
+    } else if (nameA < nameB) {
+      comparison = -1;
+    }
+    return comparison;
   }
 
   // }
@@ -57,21 +69,31 @@ class App extends React.Component {
   // }
 
   getLanding() {
-    return <Landing name={this.state.name} handleInput={this.handleInput} resultStore={this.filteredCharacters()} />;
+    return (
+      <Landing
+        name={this.state.name}
+        handleInput={this.handleInput}
+        resultStore={this.filteredCharacters()}
+        // namesSorted={this.state.resultStore.sort(this.sortByName)}
+      />
+    );
   }
   getCharacterDetail(props) {
     console.log(props.match.params.id);
     const { resultStore } = this.state;
     const clickedId = parseInt(props.match.params.id);
     const foundCharacter = resultStore.find((character) => character.id === clickedId);
+    console.log();
+
     if (foundCharacter !== undefined) {
       return <CharacterDetail character={foundCharacter} />;
+    } else {
+      console.log('No existe');
+      return <PageNotFound />;
     }
   }
 
   render() {
-    console.log(this.getCharacterDetail);
-
     return (
       <div className="App">
         <header>
