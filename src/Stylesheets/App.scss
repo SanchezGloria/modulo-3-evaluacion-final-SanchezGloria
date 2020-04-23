@@ -142,8 +142,33 @@
     font-family: 'Cabin Sketch', cursive;
     font-size: 3em;
     margin: 5em 1em;
+    animation-name: noresults;
+    animation-duration: 2s;
+    animation-iteration-count: 2;
+    @keyframes noresults {
+      0% {
+        // transform: rotate(0deg);
+        transform: translateX(0px);
+      }
+      25% {
+        // transform: rotate(20deg);
+        transform: translateX(20px);
+      }
+      50% {
+        // transform: rotate(-20deg);
+        transform: translateX(-20px);
+      }
+      to {
+        // transform: rotate(0deg);
+        transform: translateX(0px);
+      }
+    }
+    &:hover {
+      color: lawngreen;
+    }
   }
 }
+
 .child {
   text-decoration: none;
 }
