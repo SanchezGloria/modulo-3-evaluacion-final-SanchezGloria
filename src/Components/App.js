@@ -37,12 +37,24 @@ class App extends React.Component {
   }
 
   filteredCharacters() {
+    // debugger;
+
     const { resultStore, name } = this.state;
     const filteredCharacters = resultStore.filter((character) => {
       return character.name.toUpperCase().includes(name.toUpperCase());
     });
+
     return filteredCharacters;
   }
+
+  // }
+  // filteredCharacters() {
+  //   const { resultStore, name } = this.state;
+  //   const filteredCharacters = resultStore.filter((character) => {
+  //     return character.name.toUpperCase().includes(name.toUpperCase());
+  //   });
+  //   return filteredCharacters;
+  // }
 
   getLanding() {
     return <Landing name={this.state.name} handleInput={this.handleInput} resultStore={this.filteredCharacters()} />;
