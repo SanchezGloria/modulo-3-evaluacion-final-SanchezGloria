@@ -16,9 +16,11 @@ class Filters extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="name">Introduce un nombre:</label>
-        <input onChange={this.handleInput} type="text" id="" name="name" value={this.props.name} placeholder="Ej. Rick" />
+      <form className="main__page--form" onSubmit={this.handleSubmit}>
+        <label className="main__page--label" htmlFor="name">
+          Introduce un nombre:
+        </label>
+        <input className="main__page--input" onChange={this.handleInput} type="text" id="" name="name" value={this.props.name} placeholder="Ej. Rick" />
       </form>
     );
   }

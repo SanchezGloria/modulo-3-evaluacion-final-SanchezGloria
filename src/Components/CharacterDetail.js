@@ -6,13 +6,15 @@ class CharacterDetail extends React.Component {
     const statusIcon = character.status === 'Alive' ? '😀' : '💀';
     if (character !== undefined) {
       return (
-        <div>
-          <img src={character.image} alt={character.name} title={character.name}></img>
-          <h3>{character.name}</h3>
-          <p>{character.species}</p>
-          <p>{statusIcon}</p>
-          <p>{character.origin.name}</p>
-          <p>{`Aparece en ${character.episode.length} episodios`}</p>
+        <div className="detail__page--container">
+          <img className="detail__page--img" src={character.image} alt={character.name} title={character.name}></img>
+          <div className="detail__page--container-text">
+            <h3 className="detail__page--name">{character.name}</h3>
+            <p className="detail__page--info">{character.species}</p>
+            <p className="detail__page--info">{statusIcon}</p>
+            <p className="detail__page--info">{`Origen: ${character.origin.name}`}</p>
+            <p className="detail__page--info">{`Aparece en ${character.episode.length} episodios`}</p>
+          </div>
         </div>
       );
     }
@@ -24,7 +26,9 @@ class CharacterDetail extends React.Component {
     return (
       <>
         {this.renderCharacter(character)}
-        <Link to="/">Close</Link>
+        <Link to="/" className="detail__page--close">
+          <i class="fas fa-window-close"></i>
+        </Link>
       </>
     );
   }

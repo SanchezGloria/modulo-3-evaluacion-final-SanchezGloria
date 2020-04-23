@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import Landing from './Landing';
 import CharacterDetail from './CharacterDetail';
 import PageNotFound from './PageNotFound';
+import '../Stylesheets/App.scss';
 
 class App extends React.Component {
   constructor(props) {
@@ -96,10 +97,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <img src="https://help.redbubble.com/hc/article_attachments/360002309526/Rick_and_Morty_-_logo__English_.png" alt="Rick and Morty" title="Rick and Morty" />
+        <header className="header__page">
+          <img className="header__page--title" src="https://help.redbubble.com/hc/article_attachments/360002309526/Rick_and_Morty_-_logo__English_.png" alt="Rick and Morty" title="Rick and Morty" />
         </header>
-        <main>
+        <main className="main__page">
           <Switch>
             <Route exact path="/" render={this.getLanding}></Route>
             <Route path="/character/:id" render={this.getCharacterDetail}></Route>

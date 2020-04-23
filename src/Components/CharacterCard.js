@@ -9,11 +9,11 @@ class CharacterCard extends React.Component {
 
   renderCharacter(character) {
     return (
-      <li key={character.id} id={character.id}>
-        <Link to={`/character/${character.id}`}>
-          <img src={character.image} alt={character.name} title={character.name}></img>
-          <h3>{character.name}</h3>
-          <p>{character.species}</p>
+      <li className="main__page--list--item" key={character.id} id={character.id}>
+        <Link className="child" to={`/character/${character.id}`}>
+          <img className="main__page--list--item--img" src={character.image} alt={character.name} title={character.name}></img>
+          <h3 className="main__page--list--item--name">{character.name}</h3>
+          <p className="main__page--list--item--specie">{character.species}</p>
         </Link>
       </li>
     );
@@ -39,7 +39,7 @@ class CharacterCard extends React.Component {
   }
 
   render() {
-    return <div>{this.renderCharacter(this.props.character)}</div>;
+    return <div className="main__page--list--container">{this.renderCharacter(this.props.character)}</div>;
   }
 }
 

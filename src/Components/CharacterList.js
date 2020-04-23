@@ -22,10 +22,10 @@ class CharacterList extends React.Component {
 
     this.props.resultStore.sort(this.sortByName);
     if (this.props.resultStore.length === 0) {
-      return <p>{'NO HAY PERSONAJES'}</p>;
+      return <p className="main__page--no-results">{`No hay ningún personaje que coincida con la palabra ${this.props.name}`}</p>;
     } else {
       return (
-        <ul>
+        <ul className="main__page--list">
           {this.props.resultStore.map((character) => {
             return <CharacterCard character={character} />;
           })}
