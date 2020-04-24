@@ -3,16 +3,19 @@ import { Link } from 'react-router-dom';
 
 class CharacterDetail extends React.Component {
   renderCharacter(character) {
-    const statusIcon = character.status === 'Alive' ? '😀' : '💀';
+    const statusIcon = character.status === 'Alive' ? <i className="fab fa-creative-commons-sampling"></i> : '💀';
+    const specieIcon = character.species === 'Alien' ? <i className="fab fa-reddit-alien"></i> : <i className="fas fa-male"></i>;
     if (character !== undefined) {
       return (
-        <div>
-          <img src={character.image} alt={character.name} title={character.name}></img>
-          <h3>{character.name}</h3>
-          <p>{character.species}</p>
-          <p>{statusIcon}</p>
-          <p>{character.origin.name}</p>
-          <p>{`Aparece en ${character.episode.length} episodios`}</p>
+        <div className="detail__page--container">
+          <img className="detail__page--img" src={character.image} alt={character.name} title={character.name}></img>
+          <div className="detail__page--container-text">
+            <h3 className="detail__page--name">{character.name}</h3>
+            <p className="detail__page--info">{specieIcon}</p>
+            <p className="detail__page--info">{statusIcon}</p>
+            <p className="detail__page--info">{`Origen: ${character.origin.name}`}</p>
+            <p className="detail__page--info">{`Aparece en ${character.episode.length} episodios`}</p>
+          </div>
         </div>
       );
     }
@@ -24,7 +27,9 @@ class CharacterDetail extends React.Component {
     return (
       <>
         {this.renderCharacter(character)}
-        <Link to="/">Close</Link>
+        <Link to="/" className="detail__page--close">
+          <i className="fas fa-window-close"></i>
+        </Link>
       </>
     );
   }
