@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Filters extends React.Component {
   constructor(props) {
@@ -25,5 +26,10 @@ class Filters extends React.Component {
     );
   }
 }
+
+Filters.propTypes = {
+  handleInput: PropTypes.func,
+  name: PropTypes.string,
+};
 
 export default Filters;

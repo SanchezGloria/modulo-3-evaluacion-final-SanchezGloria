@@ -1,6 +1,7 @@
 import React from 'react';
 import CharacterList from './CharacterList';
 import Filters from './Filters';
+import PropTypes from 'prop-types';
 
 class Landing extends React.Component {
   render() {
@@ -12,5 +13,11 @@ class Landing extends React.Component {
     );
   }
 }
+
+Landing.propTypes = {
+  name: PropTypes.string,
+  handleInput: PropTypes.func,
+  resultStore: PropTypes.array,
+};
 
 export default Landing;
