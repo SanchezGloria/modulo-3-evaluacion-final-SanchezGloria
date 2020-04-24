@@ -4,26 +4,26 @@ import { Link } from 'react-router-dom';
 class CharacterCard extends React.Component {
   constructor(props) {
     super(props);
-    this.renderCharacters = this.renderCharacters.bind(this);
+    this.renderCharacter = this.renderCharacter.bind(this);
   }
 
   renderCharacter(character) {
     return (
-      <li key={character.id} id={character.id}>
-        <Link to={`/character/${character.id}`}>
-          <img src={character.image} alt={character.name} title={character.name}></img>
-          <h3>{character.name}</h3>
-          <p>{character.species}</p>
+      <li className="main__page--list--item" key={character.id} id={character.id}>
+        <Link className="child" to={`/character/${character.id}`}>
+          <img className="main__page--list--item--img" src={character.image} alt={character.name} title={character.name}></img>
+          <h3 className="main__page--list--item--name">{character.name}</h3>
+          <p className="main__page--list--item--specie">{character.species}</p>
         </Link>
       </li>
     );
   }
 
-  renderCharacters() {
-    if (this.props.resultStore !== undefined) {
-      return this.props.resultStore.map((character) => this.renderCharacter(character));
-    }
-  }
+  // renderCharacters() {
+  //   if (this.props.resultStore !== undefined) {
+  //     return this.props.resultStore.map((character) => this.renderCharacter(character));
+  //   }
+  // }
 
   sortByName(a, b) {
     const nameA = a.name.toUpperCase();
@@ -38,22 +38,8 @@ class CharacterCard extends React.Component {
     return comparison;
   }
 
-  // this.props.resultStore.sort(sortByName("name"));
-
-  // sortByName() {
-  //   const namesSorted = this.props.resultStore.sort((a, b) => a.name - b.name);
-  //   return namesSorted;
-  // }
-
-  // const { resultStore, name } = this.state;
-  // const filteredCharacters = resultStore.filter((character) => {
-  //   return character.name.toUpperCase().includes(name.toUpperCase());
-  // });
-  // return filteredCharacters;
   render() {
-    // console.log(this.props.resultStore.sort(this.sortByName));
-    this.props.resultStore.sort(this.sortByName);
-    return <div>{this.renderCharacters()}</div>;
+    return <div className="main__page--list--container">{this.renderCharacter(this.props.character)}</div>;
   }
 }
 

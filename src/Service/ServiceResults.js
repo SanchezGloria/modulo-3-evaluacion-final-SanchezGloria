@@ -4,9 +4,8 @@ const fetchResults = () =>
   fetch(ENDPOINT)
     .then((response) => response.json())
     .then((data) => {
-      const results = [];
-      data.results.map((result) => {
-        const characterData = {
+      const results = data.results.map((result) => {
+        return {
           id: result.id,
           name: result.name,
           image: result.image,
@@ -15,7 +14,6 @@ const fetchResults = () =>
           episode: result.episode,
           status: result.status,
         };
-        results.push(characterData);
       });
       return results;
     });
