@@ -35,7 +35,6 @@ class App extends React.Component {
 
   handleInput(value) {
     this.setState({ name: value });
-    // console.log(this.state.name);
   }
 
   // FILTERS
