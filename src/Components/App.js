@@ -44,6 +44,7 @@ class App extends React.Component {
     const filteredCharacters = resultStore.filter((character) => {
       return character.name.toUpperCase().includes(name.toUpperCase());
     });
+    filteredCharacters.sort(this.sortByName);
     return filteredCharacters;
   }
 
@@ -70,7 +71,7 @@ class App extends React.Component {
   // }
 
   getLanding() {
-    return <Landing name={this.state.name} handleInput={this.handleInput} resultStore={this.filteredCharacters()} namesSorted={this.state.resultStore.sort(this.sortByName)} />;
+    return <Landing name={this.state.name} handleInput={this.handleInput} resultStore={this.filteredCharacters()} />;
   }
   getCharacterDetail(props) {
     console.log(props.match.params.id);
