@@ -31,7 +31,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.fetchNewResults();
-    this.state.resultStore.sort(this.sortByName);
   }
 
   handleInput(value) {
