@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class CharacterCard extends React.Component {
   constructor(props) {
@@ -25,22 +26,26 @@ class CharacterCard extends React.Component {
   //   }
   // }
 
-  sortByName(a, b) {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
+  // sortByName(a, b) {
+  //   const nameA = a.name.toUpperCase();
+  //   const nameB = b.name.toUpperCase();
 
-    let comparison = 0;
-    if (nameA > nameB) {
-      comparison = 1;
-    } else if (nameA < nameB) {
-      comparison = -1;
-    }
-    return comparison;
-  }
+  //   let comparison = 0;
+  //   if (nameA > nameB) {
+  //     comparison = 1;
+  //   } else if (nameA < nameB) {
+  //     comparison = -1;
+  //   }
+  //   return comparison;
+  // }
 
   render() {
     return <div className="main__page--list--container">{this.renderCharacter(this.props.character)}</div>;
   }
 }
+
+CharacterCard.propTypes = {
+  character: PropTypes.object,
+};
 
 export default CharacterCard;

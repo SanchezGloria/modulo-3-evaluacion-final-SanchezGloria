@@ -70,14 +70,7 @@ class App extends React.Component {
   // }
 
   getLanding() {
-    return (
-      <Landing
-        name={this.state.name}
-        handleInput={this.handleInput}
-        resultStore={this.filteredCharacters()}
-        // namesSorted={this.state.resultStore.sort(this.sortByName)}
-      />
-    );
+    return <Landing name={this.state.name} handleInput={this.handleInput} resultStore={this.filteredCharacters()} namesSorted={this.state.resultStore.sort(this.sortByName)} />;
   }
   getCharacterDetail(props) {
     console.log(props.match.params.id);
