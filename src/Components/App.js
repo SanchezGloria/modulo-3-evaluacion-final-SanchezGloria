@@ -1,8 +1,6 @@
 import React from 'react';
 import { fetchResults } from '../Service/ServiceResults';
 import { Route, Switch } from 'react-router-dom';
-// import CharacterList from './CharacterList';
-// import Filters from './Filters';
 import Landing from './Landing';
 import CharacterDetail from './CharacterDetail';
 import PageNotFound from './PageNotFound';
@@ -20,12 +18,14 @@ class App extends React.Component {
     this.getCharacterDetail = this.getCharacterDetail.bind(this);
   }
 
+  // FETCH
+
   fetchNewResults() {
     fetchResults().then((data) => {
       this.setState({
         resultStore: data,
       });
-      console.log(this.state.resultStore);
+      // console.log(this.state.resultStore);
     });
   }
 
@@ -36,8 +36,10 @@ class App extends React.Component {
 
   handleInput(value) {
     this.setState({ name: value });
-    console.log(this.state.name);
+    // console.log(this.state.name);
   }
+
+  // FILTERS
 
   filteredCharacters() {
     const { resultStore, name } = this.state;
@@ -61,14 +63,7 @@ class App extends React.Component {
     return comparison;
   }
 
-  // }
-  // filteredCharacters() {
-  //   const { resultStore, name } = this.state;
-  //   const filteredCharacters = resultStore.filter((character) => {
-  //     return character.name.toUpperCase().includes(name.toUpperCase());
-  //   });
-  //   return filteredCharacters;
-  // }
+  // GET LANDING AND C.DETAIL PAGES
 
   getLanding() {
     return <Landing name={this.state.name} handleInput={this.handleInput} resultStore={this.filteredCharacters()} />;
@@ -98,8 +93,6 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" render={this.getLanding}></Route>
             <Route path="/character/:id" render={this.getCharacterDetail}></Route>
-            {/* <Filters name={name} handleInput={this.handleInput} />
-            <CharacterList resultStore={this.filteredCharacters()} name={name} /> */}
           </Switch>
         </main>
       </div>
